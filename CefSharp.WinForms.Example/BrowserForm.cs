@@ -6,6 +6,7 @@ using System;
 using System.Windows.Forms;
 using CefSharp.Example;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace CefSharp.WinForms.Example
 {
@@ -394,6 +395,48 @@ namespace CefSharp.WinForms.Example
                 //Execute extension method
                 frame.ListenForEvent("test-button", "click");
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+             var rnd = new Random();
+        
+            if (browserTabControl.TabCount >= 10) {
+                //dispose some control if count more then 10
+                var tabPage = browserTabControl.Controls[rnd.Next(browserTabControl.TabCount)];
+                var control = (BrowserTabUserControl)tabPage.Controls[0];
+
+                if (control != null)
+                {
+                    control.Dispose();
+                }
+                browserTabControl.Controls.Remove(tabPage);
+            }
+
+            List<string> sites = new List<string>(new string[] { 
+                "Google.com",
+                "Facebook.com",
+                "Youtube.com",
+                "Baidu.com",
+                "Yahoo.com",
+                "Amazon.com",
+                "Wikipedia.org",
+                "Qq.com",
+                "Twitter.com",
+                "Google.co.in",
+                "Live.com",
+                "Taobao.com",
+                "Sina.com.cn",
+                "Linkedin.com",
+                "Yahoo.co.jp",
+                "Weibo.com",
+                "Ebay.com"
+            });
+
+            
+            var domain = sites[rnd.Next(sites.Count)];
+
+            AddTab(domain);
         }
     }
 }

@@ -73,7 +73,7 @@ namespace CefSharp.WinForms.Example
 
         private void OnBrowserStatusMessage(object sender, StatusMessageEventArgs args)
         {
-            this.InvokeOnUiThreadIfRequired(() => statusLabel.Text = args.Value);
+            //this.InvokeOnUiThreadIfRequired(() => statusLabel.Text = args.Value);
         }
 
         private void OnBrowserLoadingStateChanged(object sender, LoadingStateChangedEventArgs args)
@@ -81,17 +81,17 @@ namespace CefSharp.WinForms.Example
             SetCanGoBack(args.CanGoBack);
             SetCanGoForward(args.CanGoForward);
 
-            this.InvokeOnUiThreadIfRequired(() => SetIsLoading(!args.CanReload));
+           // this.InvokeOnUiThreadIfRequired(() => SetIsLoading(!args.CanReload));
         }
 
         private void OnBrowserTitleChanged(object sender, TitleChangedEventArgs args)
         {
-            this.InvokeOnUiThreadIfRequired(() => Parent.Text = args.Title);
+            //this.InvokeOnUiThreadIfRequired(() => Parent.Text = args.Title);
         }
 
         private void OnBrowserAddressChanged(object sender, AddressChangedEventArgs args)
         {
-            this.InvokeOnUiThreadIfRequired(() => urlTextBox.Text = args.Address);
+            //this.InvokeOnUiThreadIfRequired(() => urlTextBox.Text = args.Address);
         }
 
         private static void OnJavascriptEventArrived(string eventName, object eventData)
@@ -115,12 +115,12 @@ namespace CefSharp.WinForms.Example
 
         private void SetCanGoBack(bool canGoBack)
         {
-            this.InvokeOnUiThreadIfRequired(() => backButton.Enabled = canGoBack);
+            // this.InvokeOnUiThreadIfRequired(() => backButton.Enabled = canGoBack);
         }
 
         private void SetCanGoForward(bool canGoForward)
         {
-            this.InvokeOnUiThreadIfRequired(() => forwardButton.Enabled = canGoForward);
+            // this.InvokeOnUiThreadIfRequired(() => forwardButton.Enabled = canGoForward);
         }
 
         private void SetIsLoading(bool isLoading)
@@ -192,7 +192,7 @@ namespace CefSharp.WinForms.Example
 
         public void DisplayOutput(string output)
         {
-            this.InvokeOnUiThreadIfRequired(() => outputLabel.Text = output);
+            //this.InvokeOnUiThreadIfRequired(() => outputLabel.Text = output);
         }
 
         private void HandleToolStripLayout(object sender, LayoutEventArgs e)
